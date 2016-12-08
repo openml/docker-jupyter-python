@@ -1,0 +1,10 @@
+name: openml_py3
+dependencies:
+   - python=3.5
+   - numpy
+   - scipy
+   - matplotlib
+   - seaborn
+   - pip:
+     - git+https://github.com/renatopp/liac-arff.git
+     - git+https://github.com/openml/openml-python.git@feature/upload-run
