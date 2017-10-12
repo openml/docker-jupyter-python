@@ -5,13 +5,13 @@ MAINTAINER "Andrey Ustyuzhanin" <anaderi@yandex-team.ru>
 #RUN conda install -y -q -c damianavila82 rise
 
 COPY version environment.yml start_jupyter_or_everware.sh $HOME/
-RUN conda env create -n openml_py3 --file environment.yml
-RUN echo "source activate openml_py3" >> ~/.bashrc
+RUN conda env create -n openml_py3 --file environment.yml && \
+    echo "source activate openml_py3" >> ~/.bashrc
 
 USER root
-RUN apt-get update
-RUN apt-get install -y xvfb pkg-config less jq
-RUN mkdir -p /notebooks && chown jovyan /notebooks
+RUN apt-get update && \
+    apt-get install -y xvfb pkg-config less jq && \
+    mkdir -p /notebooks && chown jovyan /notebooks
 USER jovyan
 WORKDIR $HOME
 
